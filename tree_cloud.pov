@@ -93,9 +93,6 @@ union {
    //rotate 90*x
 }    
 
-object {tree}
-
-
 #declare cloud = sphere { 0,2 hollow no_shadow
   texture { pigment { rgbt 1 } }
   interior {
@@ -121,6 +118,7 @@ object {tree}
       }
     }
   }
+  scale<2.5,1.2,3.0> translate<-0.2,0.3,0.0>
 }
 
-object {cloud scale<2.5,1.2,3.0> translate<-0.2,0.3,0.0>}
+#declare tree_cloud = union {object{tree} object{cloud}}

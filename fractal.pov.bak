@@ -54,7 +54,7 @@ union {
 #declare radius_decay = 0.7;
 #declare min_spread_angle = 12;
 #declare max_spread_angle = 40;
-#declare random_generator = seed(23);
+#declare random_generator = seed(1);
 
 #macro Section(Start, End, base_radius, top_radius)
     cone{
@@ -88,7 +88,7 @@ union {
 
 #end
 
-union {
+#declare tree = union {
    FractalTree(<-2,0,0>,<1,0,0>,1,branching_factor,0.07)  
    //rotate 90*x
 }    
