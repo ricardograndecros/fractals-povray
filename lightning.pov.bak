@@ -1,0 +1,27 @@
+#include "colors.inc"
+#include "transforms.inc"
+#include "textures.inc"
+
+#declare CamLoc = <0, 0, -5>;
+#declare CamLocTop = <0,5,0>;
+#declare CamLook = <0,0,0>;
+camera
+{
+  location CamLoc
+  look_at CamLook
+}
+
+light_source
+{
+  CamLoc
+  color White
+}
+
+
+ julia_fractal {
+  <-0.083,0.0,-0.83,-0.025>
+  quaternion
+  sqr
+  max_iteration 8
+  precision 15
+ }
