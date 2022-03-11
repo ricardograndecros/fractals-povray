@@ -2,22 +2,6 @@
 #include "transforms.inc"
 #include "textures.inc"
 
-#declare CamLoc = <0, 0, -5>;
-#declare CamLocTop = <0,5,0>;
-#declare CamLook = <0,0,0>;
-camera
-{
-  location CamLoc
-  look_at CamLook
-}
-
-light_source
-{
-  CamLoc
-  color White
-}
-
-
 /*
 #declare Init_Height    = 12;
 #declare Spread_Ang     = 10;
@@ -56,23 +40,22 @@ union {
 #declare max_spread_angle = 40;
 #declare random_generator = seed(10);
 
+
+#declare Stem_Texture =
+texture{ pigment{ color rgb< 0.85, 0.6, 0.40>*0.25}
+        normal{bumps 0.45 scale<0.015,0.045,0.015>}
+         finish { phong 0.05 }}
+
 #macro Section(Start, End, base_radius, top_radius)
     cone{
         Start, base_radius, End, top_radius
-                texture{ pigment{ color rgb<0.23, 0.11, 0.03>*0.9 }
-                 normal { julia <-0.099999, -0.88000>, 100
-                          scale 5.0  turbulence 0}
-                 finish { specular 0.75 reflection{ 0.0 } }
-               } // end of texture
-
-
-
- 
- 
+        texture{ Stem_Texture
+        } // end of texture
 
     }                               
 #end
-
+      
+     
 #macro FractalTree(Origin, Destination, Size, Branches, Radius)
     #if (Branches > 0)
         Section(Origin, Origin+Destination*Size, Radius, radius_decay*Radius)
