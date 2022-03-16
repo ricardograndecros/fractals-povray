@@ -27,14 +27,36 @@ light_source {
 
 polygon {
  4,
- <1,1><-1,1><-1,-1><1,-1>
+ <1,2><-1,2><-1,-2><1,-2>
  texture{ pigment{ julia <-0.151,1.0285>, 40 
-                color_map {[0.0 color rgbt <0,0,0,1>]
+                color_map {[0.15 color rgbt <1,1,1,1>]
                            [0.95 color White]}
                 rotate -20*z
                }
-                 normal { julia <-0.15,1.03>, 40
-                          scale 1.0 turbulence 0}
+                 normal { julia <-0.151,1.0285>, 40  rotate -20*z
+                          scale 1.0 turbulence 0} 
+                          
+                 finish { reflection 0}
                } // end of texture
 
-}
+}       
+
+// sky ---------------------------------------------------------------------
+#include "skies.inc"
+sky_sphere{ S_Cloud4  // 1 - 5
+            scale 1         
+          } //end of skysphere
+//--------------------------------------------------------------------------
+/*
+// fog ---------------------------------------------------------------------
+fog{ fog_type   2
+     distance   50
+     color      White*0.5
+     fog_offset 0.1
+     fog_alt    2.0
+     turbulence 0.8
+   } // end of fog
+//--------------------------------------------------------------------------
+*/ 
+
+

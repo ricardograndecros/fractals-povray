@@ -44,7 +44,7 @@ fog{ fog_type   2
 
 object {tree_cloud}
 
-object {lightning_polygon translate<-1,-1.2,3> scale<0,0,0>}
+object {lightning_polygon translate<-1,-2,3> scale<0,0,0>}
 
 
 
