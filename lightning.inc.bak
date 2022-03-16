@@ -24,5 +24,6 @@ light_source {
                           
                  finish { reflection 0}
                } // end of texture
+               no_shadow
 
 }  
