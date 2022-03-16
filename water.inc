@@ -18,7 +18,7 @@ global_settings{ assumed_gamma 1.0 }
 #include "functions.inc"
 #include "math.inc"
 #include "transforms.inc"
-#include "functions.inc"
+#include "functions.inc" 
 //--------------------------------------------------------------------------
 // camera ------------------------------------------------------------------
 #declare Camera_0 = camera {/*ultra_wide_angle*/ angle 75      // front view
@@ -109,51 +109,55 @@ union{
 //---------------------------- objects in scene ----------------------------
 //--------------------------------------------------------------------------
 
+  
+  
+  
+
+/* WATER */
+
+#declare water_texture = material{
+          texture {
+            pigment {
+              color rgbt <0.2, 0.7, 0.3, 0.5>
+            }
+            finish {
+              ambient 0.0 // cambia color del agua cuando no es completamente transparente
+              diffuse 0.0
+        
+              reflection {
+                0.0, 1.0 // varaible reflection (cambia según el ángulo en el que incide la luz)
+                fresnel on
+              }
+        
+              specular 0.8
+              roughness 0.03
+            }
+            normal {
+                function {
+                    f_ridged_mf(x, y, z, 0.1, 3.0, 7, 0.7, 0.7, 2)
+                } 0.8
+                scale <0.13, 0.4, 0.13>
+          }
+          }
+          interior {
+            ior 1.3 
+            fade_distance 4
+            fade_power 1001
+            media {
+            scattering { 3 <0.5, 0.65, 0.4> }
+            }
+          }
+ }    
+     
 
 
 
 plane { <0,1,0>, 0  hollow // normal vector, distance to zero ----
-        material {
-          texture {
-            pigment {
-              color rgbt <1, 1, 1, 1>
-            }
-            finish {
-              ambient 0.0
-              diffuse 0.0
-        
-              reflection {
-                0.0, 1.0
-                fresnel on
-              }
-        
-              specular 0.4
-              roughness 0.003
-            }
-            normal {
-              function {
-                f_ridged_mf(x, y, z, 0.1, 3.0, 7, 0.7, 0.7, 2)
-              } 0.8
-              scale 0.13
-            }
-          }
-          interior {
-            ior 1.3
-          }    
-          }
-          }
+        material { water_texture }
+}
  
 plane {<0,1,0> 0 hollow
         texture {pigment {color Black}}
         translate <0,-6,0>
 }
         
-
-
-
-
-
-
-
-
-

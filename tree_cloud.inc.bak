@@ -2,22 +2,6 @@
 #include "transforms.inc"
 #include "textures.inc"
 
-#declare CamLoc = <0, 0, -5>;
-#declare CamLocTop = <0,5,0>;
-#declare CamLook = <0,0,0>;
-camera
-{
-  location CamLoc
-  look_at CamLook
-}
-
-light_source
-{
-  CamLoc
-  color White
-}
-
-
 /*
 #declare Init_Height    = 12;
 #declare Spread_Ang     = 10;
@@ -121,6 +105,3 @@ texture{ pigment{ color rgb< 0.85, 0.6, 0.40>*0.25}
 }
 
 #declare tree_cloud = union {object{tree} object{cloud}}
- 
- 
-object {tree}    
