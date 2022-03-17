@@ -12,10 +12,10 @@ light_source {
 
 
 #declare lightning_polygon = polygon {
- 4,
- <1,2><-1,2><-1,-2><1,-2>
+ 5,
+ <0.3,1.25><-0.1,1><-1,1.25><-1,-2><1.0,-2>
  texture{ pigment{ julia <-0.151,1.0285>, 40 
-                color_map {[0.15 color rgbt <1,1,1,1>]
+                color_map {[0.05 color rgbt <1,1,1,1>]
                            [0.95 color White]}
                 rotate -20*z
                }
@@ -23,9 +23,7 @@ light_source {
                           scale 1.0 turbulence 0} 
                           
                  finish { reflection 0}
-               } // end of texture
+               } // end of texture 
                no_shadow
 
-}
-
-  
+}  

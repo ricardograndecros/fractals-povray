@@ -26,4 +26,6 @@ light_source {
                } // end of texture
                no_shadow
 
-}  
+}
+
+  

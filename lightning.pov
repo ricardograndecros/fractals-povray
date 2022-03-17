@@ -26,8 +26,8 @@ light_source {
 
 
 polygon {
- 4,
- <1,2><-1,2><-1,-2><1,-2>
+ 5,
+ <0.3,1.25><-0.1,1><-1,1.25><-1,-2><1.0,-2>
  texture{ pigment{ julia <-0.151,1.0285>, 40 
                 color_map {[0.15 color rgbt <1,1,1,1>]
                            [0.95 color White]}
@@ -40,7 +40,12 @@ polygon {
                } // end of texture 
                no_shadow
 
-}       
+}   
+
+polygon {
+    4, <-1,1.35><1,1.35><1,2><-1,2> 
+    texture {pigment{color Red}}
+}    
 
 // sky ---------------------------------------------------------------------
 #include "skies.inc"

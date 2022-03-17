@@ -37,7 +37,8 @@ polygon {
                           scale 1.0 turbulence 0} 
                           
                  finish { reflection 0}
-               } // end of texture
+               } // end of texture 
+               no_shadow
 
 }       
 

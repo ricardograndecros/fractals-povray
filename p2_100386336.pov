@@ -1,7 +1,8 @@
 #include "tree_cloud.inc"
-#include "lightning.inc"
+#include "lightning.inc" 
+#include "rain_macros.inc"
 
-#declare CamLoc = <0, 2, -10>;
+#declare CamLoc = <0, 2, -8>;
 #declare CamLocTop = <0,5,0>;
 #declare CamLook = <0,0,0>;
 camera
@@ -34,6 +35,7 @@ sphere{ <0,0,0>, 1
 */
 
 // fog ---------------------------------------------------------------------
+/*
 fog{ fog_type   2
      distance   20
      color      White*0.5
@@ -41,6 +43,7 @@ fog{ fog_type   2
      fog_alt    2.0
      turbulence 0.8
    } // end of fog
+*/
 //--------------------------------------------------------------------------
 
 
@@ -53,7 +56,7 @@ fog{ fog_type   2
 
 object {tree_cloud translate<0,2,0>}
 
-object {lightning_polygon translate<-1,1,0> scale<0,0.9,0>}
+object {lightning_polygon translate<-0.7,0.6,0> scale<0,0.0,0>}
 
 
 
@@ -113,9 +116,8 @@ object {lightning_polygon translate<-1,1,0> scale<0,0.9,0>}
 #declare square_polygon = polygon {4, <4,0,4>,<-4,0,4>,<-4,0,-4>,<4,0,-4>}    
 
 
-intersection {object{blob1} object{square_polygon} material{water_texture} scale <2,0,2> translate<0,0.01,0>}  
- 
- 
+#declare water_puddle = intersection {object{blob1} object{square_polygon} material{water_texture} scale <2,0,2> translate<0,0.01,0>}  
+object {water_puddle}
  
 #declare FelbriggSand = texture {
  pigment {color rgb < 1, 0.9, 0.65>}
@@ -135,3 +137,9 @@ plane { <0,1,0>, 0  hollow // normal vector, distance to zero ----
         texture{ FelbriggSand }
 
       } // end of plane ------------------------------------------
+ 
+#declare r_rain=seed(2802); 
+ 
+rain_over(2000,<3,2,3>,<10,0,0>,.25,int(1000*rand(r_rain))) 
+
+rain_splashes_with_rings(water_puddle,200,<3,3,3>,.15,int(1000*rand(r_rain)))

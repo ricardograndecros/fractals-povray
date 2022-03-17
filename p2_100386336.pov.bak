@@ -23,10 +23,19 @@ sky_sphere{ S_Cloud4  // 1 - 5
             scale 1         
           } //end of skysphere
 //--------------------------------------------------------------------------
+/*
+// starry sky ----------------
+#include "stars.inc"
+sphere{ <0,0,0>, 1
+        texture{ Starfield1 scale 0.05
+               } // end of texture
+        scale 10000
+      } //end of sphere ---------------
+*/
 
 // fog ---------------------------------------------------------------------
 fog{ fog_type   2
-     distance   50
+     distance   20
      color      White*0.5
      fog_offset 0.1
      fog_alt    2.0
@@ -44,7 +53,7 @@ fog{ fog_type   2
 
 object {tree_cloud translate<0,2,0>}
 
-//object {lightning_polygon translate<-1,-2,3> scale<0,0,0>}
+object {lightning_polygon translate<-1,1,0> scale<0,0.9,0>}
 
 
 
@@ -104,4 +113,25 @@ object {tree_cloud translate<0,2,0>}
 #declare square_polygon = polygon {4, <4,0,4>,<-4,0,4>,<-4,0,-4>,<4,0,-4>}    
 
 
-intersection {object{blob1} object{square_polygon} material{water_texture} scale <2,0,2>}    
+intersection {object{blob1} object{square_polygon} material{water_texture} scale <2,0,2> translate<0,0.01,0>}  
+ 
+ 
+ 
+#declare FelbriggSand = texture {
+ pigment {color rgb < 1, 0.9, 0.65>}
+ normal {granite 0.1 scale 0.02
+ }
+        normal { bumps 0.4 scale 0.1
+}
+ finish {
+  brilliance 1.6
+  specular 0.3
+  ambient 0.05
+ }
+}
+ 
+plane { <0,1,0>, 0  hollow // normal vector, distance to zero ----
+
+        texture{ FelbriggSand }
+
+      } // end of plane ------------------------------------------
